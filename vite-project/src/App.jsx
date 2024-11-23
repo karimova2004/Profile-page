@@ -1,6 +1,4 @@
 
-
-
 // import React from "react";
 // import "./App.css";
 
@@ -40,21 +38,96 @@
 
 // export default App;
 
+// import React, { Component } from "react";
+
+// class SubscribeButton extends Component {
+  
+//   clickHandler = (event) => {
+//     console.log(event.target); 
+//   };
+
+//   render() {
+//     return (
+//       <button type="button" onClick={this.clickHandler}>
+//         Button click!
+//       </button>
+//     );
+//   }
+// }
+
+// export default SubscribeButton;
+
+
+
+
+// import React, { Component } from "react";
+
+// class SubscribeButton extends Component {
+//   state = {
+//     text: "Click here",
+//     subscribed: false,
+//   };
+
+//   render() {
+//     const { text } = this.state;
+//     return (
+//       <button type="button" className="subscribe-button">
+//         {text}
+//       </button>
+//     );
+//   }
+// }
+
+// const App = () => {
+//   return (
+//     <div className="app">
+//       <h1>Düymədə Mətn Göstərilməsi</h1>
+//       <SubscribeButton />
+//     </div>
+//   );
+// };
+
+// export default App;
+
+
 import React, { Component } from "react";
+import "./App.css";
 
 class SubscribeButton extends Component {
-  
-  clickHandler = (event) => {
-    console.log(event.target); 
+  state = {
+    text: "Click here",
+    subscribed: false,
+  };
+
+  handleClick = () => {
+    this.setState({
+      text: "Clicked",
+      subscribed: true,
+    });
   };
 
   render() {
+    const { text, subscribed } = this.state;
     return (
-      <button type="button" onClick={this.clickHandler}>
-        Button click!
+      <button
+        type="button"
+        className={`subscribe-button ${subscribed ? "clicked" : ""}`}
+        onClick={this.handleClick}
+      >
+        {text}
       </button>
     );
   }
 }
 
-export default SubscribeButton;
+const App = () => {
+  return (
+    <div className="app">
+      <h1>Düymə Mətn və Stil Dəyişdirmə</h1>
+      <SubscribeButton />
+    </div>
+  );
+};
+
+export default App;
+
